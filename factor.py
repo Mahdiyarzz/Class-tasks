@@ -1,4 +1,4 @@
-name = str(input("Lotfan esm kharidar ra vared konid: "))
+name = str(input("Lotfan ehsm kharidar ra vared konid: "))
 product_name = input("esm kalaye moshtari ra vared konid: ")
 price_of_products = int(input("geymat kalaye moshtari ra vared konid: ").strip())
 quaintity = int(input("tedad kalaye moshtari ra vared konid: "))
@@ -8,11 +8,21 @@ if discount_status == "bale":
 else :
     discount = 0
 shipping_cost = int(input("hazine ersal kalara vared konid: "))
+javab_pardakht =input("pardakht shod? : bale/kheyr")
+
 total_cost = price_of_products * quaintity
 discount_amount = total_cost * discount / 100
 final_cost = total_cost -discount_amount + shipping_cost
-javab_pardakht =input("pardakht shod? : bale/kheyr")
-if javab_pardakht == "bale":
+
+if price_of_products <= 0:
+    print("khata :geymat nabayad kam tar ya mosavi sefr bashad")
+elif discount <= 0:
+    print("khata : takhfif nabayad kam tar ya mosavi sefr bashad")
+elif quaintity <= 0:
+    print("khata : teddad nabayad kamtar mosavi sefr bashad")
+elif shipping_cost < 0:
+    print("khata : hazine ersal nemitvanad kamtar az sefr bashad")
+elif javab_pardakht == "bale":
     print("\n --------factor--------")
     print("pardakht shode :)")
     print(f'agha/khanom : {name}')
@@ -22,8 +32,6 @@ if javab_pardakht == "bale":
     print(f'takhfif : {discount:,}%')
     print(f'hazine ersal : {shipping_cost:,}')
     print(f'hazine nahayi : {final_cost:,}')
-
-
 elif javab_pardakht == "kheyr":
     print("pardakht nashode :/")
 
